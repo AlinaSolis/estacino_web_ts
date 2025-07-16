@@ -1,0 +1,213 @@
+/* src/pages/CSS/AdminLoginPage.css */
+
+:root {
+  --primary: #0A7764;
+  --secondary: #0A7764;
+  --white: #FFFFFF;
+  --text-dark: #333333;
+  --text-medium: #5A5A5A;
+  --text-light: #8E8E93;
+  --background: #F8F9FA;
+  --card-background: #FDFDFD;
+  --border: #E0E0E0;
+  --success: #4CAF50;
+  --warning: #FF9800;
+  --error: #F44336;
+  --input-background: #F5F5F5;
+}
+
+.admin-container {
+  background-color: var(--background);
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+}
+
+.admin-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 15px 20px;
+  background-color: var(--primary);
+  color: var(--white);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.admin-header .title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.login-section {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.login-outer-container {
+  width: 100%;
+  max-width: 400px;
+  background-color: var(--white);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.login-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.login-subtitle {
+  font-size: 16px;
+  color: var(--text-medium);
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  background-color: var(--input-background);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 20px;
+  padding: 0 15px;
+  height: 50px;
+}
+
+.input-container input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  color: var(--text-dark);
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.checkbox.checked {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.login-button {
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 12px;
+  padding: 16px;
+  width: 100%;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.forgot-password {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.forgot-password a {
+  color: var(--primary);
+  text-decoration: underline;
+  font-size: 16px;
+}
+
+.admin-panel {
+  padding: 20px;
+}
+
+.card {
+  background-color: var(--white);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.card-content {
+  margin-left: 15px;
+}
+
+.card-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.card-subtitle {
+  font-size: 16px;
+  color: var(--text-medium);
+  margin-top: 5px;
+}
+
+.stats-grid, .options-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.stat, .option {
+  flex: 1 1 48%;
+  padding: 15px;
+  background-color: var(--background);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+.stat-label, .option-description {
+  font-size: 12px;
+  color: var(--text-medium);
+  margin-top: 4px;
+}
+
+.logout-button {
+  background-color: var(--error);
+  color: var(--white);
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}

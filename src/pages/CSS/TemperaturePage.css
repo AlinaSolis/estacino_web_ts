@@ -1,0 +1,196 @@
+:root {
+  --primary: #D78909;
+  --primary-light: rgba(215, 137, 9, 0.1);
+  --white: #FFFFFF;
+  --background: #F5F5F5;
+  --text-dark: #333333;
+  --border: rgba(0, 0, 0, 0.1);
+  --gray: #888888;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: var(--background);
+  color: var(--text-dark);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header {
+  height: 60px;
+  background-color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.menu-button {
+  position: absolute;
+  left: 15px;
+  top: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--white);
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--white);
+  margin: 0;
+}
+
+.content {
+  overflow-y: auto;
+  padding-bottom: 30px;
+  flex-grow: 1;
+}
+
+.controls-container {
+  display: flex;
+  justify-content: space-between;
+  background: var(--white);
+  margin: 15px;
+  border-radius: 10px;
+  padding: 15px 20px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  align-items: center;
+}
+
+.date-picker-container {
+  flex: 1;
+  text-align: center;
+}
+
+.date-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.date-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: var(--primary-light);
+  border: 1px solid rgba(215, 137, 9, 0.3);
+  cursor: pointer;
+  color: var(--text-dark);
+  font-size: 14px;
+  gap: 8px;
+}
+
+.separator {
+  width: 1px;
+  height: 40px;
+  background-color: var(--border);
+  margin: 0 10px;
+}
+
+.search-button {
+  display: block;
+  margin: 0 15px 20px;
+  width: calc(100% - 30px);
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+  padding: 15px;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #b06e00;
+}
+
+.chart-container {
+  background-color: var(--white);
+  margin: 0 16px 16px;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.chart-container h2 {
+  margin: 0 0 8px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.table-container {
+  width: 92%;
+  background-color: var(--white);
+  border-radius: 12px;
+  margin: 20px auto 40px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.table-container h2 {
+  background-color: var(--primary-light);
+  padding: 15px;
+  margin: 0;
+  font-weight: 600;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.table-header {
+  display: flex;
+  background-color: var(--primary);
+  padding: 12px 5px;
+  color: var(--white);
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.header-text {
+  flex: 1;
+  text-align: center;
+}
+
+.flex-2 {
+  flex: 2;
+}
+
+.table-empty-body {
+  padding: 40px;
+  text-align: center;
+  color: var(--gray);
+}
+
+.empty-table-text {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.empty-state {
+  text-align: center;
+  margin-top: 50px;
+  padding: 40px 20px;
+  color: var(--gray);
+}
+
+.empty-text {
+  margin-top: 15px;
+  font-size: 16px;
+  line-height: 24px;
+}
+
