@@ -26,53 +26,43 @@ body, html, #root {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  width: 100%;
+  padding-left: 280px; /* Espacio para navbar expandida */
+  padding-top: 64px; /* Espacio para topbar */
+  transition: padding-left 0.3s ease;
+}
+
+/* Ajuste para navbar colapsada */
+@media (max-width: 1200px) {
+  .container {
+    padding-left: 72px;
+  }
 }
 
 .header {
-  height: 60px;
-  background-color: var(--primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-
-.menu-button {
-  position: absolute;
-  left: 15px;
-  top: 16px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  color: var(--white);
-  padding: 8px;
-  display: flex;
-  align-items: center;
-}
-
-.title {
-  font-size: 18px;
-  font-weight: bold;
-  color: var(--white);
-  margin: 0;
+  display: none; /* Ocultamos el header ya que usamos la topbar global */
 }
 
 .content {
-  flex-grow: 1;
-  padding-bottom: 30px;
-  overflow-y: auto;
-  padding-top: 15px;
+  flex: 1;
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  min-height: calc(100vh - 64px);
 }
 
 .controls-container {
   display: flex;
   justify-content: space-between;
-  padding: 15px 20px;
+  padding: 20px;
   background-color: var(--white);
-  margin: 15px;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-bottom: 24px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .date-picker-container {
@@ -80,12 +70,14 @@ body, html, #root {
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 200px;
 }
 
 .date-label {
   font-size: 14px;
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  color: var(--text-dark);
 }
 
 .date-button {
@@ -93,8 +85,7 @@ body, html, #root {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 150px;
-  padding: 10px;
+  padding: 12px 16px;
   border-radius: 8px;
   background-color: var(--primary-light);
   border: 1px solid rgba(10, 119, 100, 0.3);
@@ -102,6 +93,12 @@ body, html, #root {
   color: var(--text-dark);
   font-size: 14px;
   user-select: none;
+  transition: all 0.2s ease;
+}
+
+.date-button:hover {
+  background-color: rgba(10, 119, 100, 0.15);
+  border-color: rgba(10, 119, 100, 0.5);
 }
 
 .date-button i {
@@ -116,8 +113,9 @@ body, html, #root {
 
 .separator {
   width: 1px;
+  height: 50px;
   background-color: var(--border);
-  margin: 0 10px;
+  margin: 0 20px;
 }
 
 .search-button {
@@ -125,16 +123,18 @@ body, html, #root {
   color: var(--white);
   font-weight: bold;
   font-size: 16px;
-  padding: 15px;
-  margin: 0 15px 20px;
-  border-radius: 10px;
+  padding: 16px 24px;
+  margin: 0 auto 32px;
+  border-radius: 12px;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.2s ease;
+  width: 100%;
+  max-width: 300px;
 }
 
 .search-button:hover {
@@ -145,16 +145,19 @@ body, html, #root {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 20px 0;
-  margin-top: 50px;
+  padding: 60px 40px;
+  margin-top: 80px;
   color: var(--gray);
   text-align: center;
+  min-height: 300px;
+  justify-content: center;
 }
 
 .empty-text {
-  margin-top: 15px;
-  font-size: 16px;
-  line-height: 24px;
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 1.6;
+  max-width: 500px;
 }
 
 .loader {
@@ -175,42 +178,51 @@ body, html, #root {
   display: flex;
   justify-content: space-between;
   padding: 0 16px;
-  margin-top: 16px;
-  gap: 16px;
+  margin-bottom: 32px;
+  gap: 20px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .current-value-card,
 .direction-card {
   flex: 1;
   background-color: var(--white);
-  border-radius: 12px;
-  padding: 16px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   text-align: center;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .current-value-label {
   font-size: 14px;
   font-weight: 500;
   display: block;
+  margin-bottom: 12px;
+  color: var(--text-dark);
 }
 
 .current-value-wrapper {
   display: flex;
   align-items: baseline;
   justify-content: center;
-  margin: 8px 0;
+  margin: 12px 0;
 }
 
 .current-value {
-  font-size: 32px;
+  font-size: 36px;
   font-weight: bold;
   color: var(--primary);
 }
 
 .current-value-unit {
-  font-size: 16px;
-  margin-left: 4px;
+  font-size: 18px;
+  margin-left: 6px;
   color: var(--text-dark);
 }
 
@@ -218,38 +230,39 @@ body, html, #root {
   font-size: 14px;
   font-style: italic;
   color: var(--text-dark);
+  margin-top: 8px;
 }
 
 .chart-container {
   background-color: var(--white);
   border-radius: 16px;
-  padding: 16px;
-  margin: 16px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   text-align: center;
+  margin-bottom: 32px;
+  min-height: 400px;
 }
 
 .chart-title {
   font-weight: 600;
-  font-size: 16px;
-  margin-bottom: 8px;
+  font-size: 20px;
+  margin-bottom: 20px;
   color: var(--text-dark);
 }
 
 .table-container {
-  width: 92%;
   background-color: var(--white);
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
-  margin: 20px auto;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-bottom: 40px;
 }
 
 .table-title {
   background-color: var(--primary-light);
-  padding: 15px;
+  padding: 20px;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 18px;
   text-align: center;
   border-bottom: 1px solid var(--border);
   color: var(--text-dark);
@@ -258,7 +271,7 @@ body, html, #root {
 .table-header {
   display: flex;
   background-color: var(--primary);
-  padding: 12px 5px;
+  padding: 16px 8px;
   color: var(--white);
   font-weight: bold;
   font-size: 14px;
@@ -267,6 +280,7 @@ body, html, #root {
 .header-text {
   flex: 1;
   text-align: center;
+  padding: 0 8px;
 }
 
 .flex-2 {
@@ -278,17 +292,19 @@ body, html, #root {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40px;
+  padding: 60px 40px;
   color: var(--gray);
+  min-height: 200px;
 }
 
 .empty-table-text {
-  margin-top: 10px;
-  font-size: 14px;
+  margin-top: 16px;
+  font-size: 16px;
   text-align: center;
+  line-height: 1.5;
 }
 
-/* Íconos de material-icons si usas la fuente (o puedes usar lucide-react) */
+/* Íconos de material-icons */
 .material-icons {
   font-family: 'Material Icons';
   font-style: normal;
@@ -312,3 +328,69 @@ body, html, #root {
   font-size: 50px !important;
 }
 
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 0;
+    padding-top: 64px;
+  }
+  
+  .content {
+    padding: 16px;
+  }
+  
+  .controls-container {
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+  }
+  
+  .date-picker-container {
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .separator {
+    width: 100%;
+    height: 1px;
+    margin: 8px 0;
+  }
+  
+  .search-button {
+    max-width: 100%;
+  }
+  
+  .current-data-container {
+    flex-direction: column;
+    gap: 16px;
+    padding: 0;
+  }
+  
+  .current-value-card,
+  .direction-card {
+    min-height: 120px;
+  }
+  
+  .current-value {
+    font-size: 28px;
+  }
+  
+  .chart-container {
+    padding: 16px;
+    min-height: 300px;
+  }
+  
+  .table-title {
+    padding: 16px;
+    font-size: 16px;
+  }
+  
+  .table-header {
+    padding: 12px 4px;
+    font-size: 12px;
+  }
+  
+  .header-text {
+    padding: 0 4px;
+  }
+}

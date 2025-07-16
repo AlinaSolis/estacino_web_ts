@@ -22,62 +22,59 @@ body {
 .container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
+  width: 100%;
+  padding-left: 280px; /* Espacio para navbar expandida */
+  padding-top: 64px; /* Espacio para topbar */
+  transition: padding-left 0.3s ease;
+}
+
+/* Ajuste para navbar colapsada */
+@media (max-width: 1200px) {
+  .container {
+    padding-left: 72px; /* Espacio para navbar colapsada */
+  }
 }
 
 .header {
-  height: 60px;
-  background-color: var(--primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-
-.menu-button {
-  position: absolute;
-  left: 15px;
-  top: 16px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--white);
-}
-
-.title {
-  font-size: 18px;
-  font-weight: bold;
-  color: var(--white);
-  margin: 0;
+  display: none; /* Ocultamos el header ya que usamos la topbar global */
 }
 
 .content {
-  overflow-y: auto;
-  padding-bottom: 30px;
-  flex-grow: 1;
+  flex: 1;
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  min-height: calc(100vh - 64px);
 }
 
 .controls-container {
   display: flex;
   justify-content: space-between;
   background: var(--white);
-  margin: 15px;
-  border-radius: 10px;
-  padding: 15px 20px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   align-items: center;
+  margin-bottom: 24px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .date-picker-container {
   flex: 1;
   text-align: center;
+  max-width: 200px;
 }
 
 .date-label {
   display: block;
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: var(--text-dark);
 }
 
 .date-button {
@@ -85,7 +82,7 @@ body {
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 10px;
+  padding: 12px 16px;
   border-radius: 8px;
   background-color: var(--primary-light);
   border: 1px solid rgba(215, 137, 9, 0.3);
@@ -93,27 +90,35 @@ body {
   color: var(--text-dark);
   font-size: 14px;
   gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.date-button:hover {
+  background-color: rgba(215, 137, 9, 0.15);
+  border-color: rgba(215, 137, 9, 0.5);
 }
 
 .separator {
   width: 1px;
-  height: 40px;
+  height: 50px;
   background-color: var(--border);
-  margin: 0 10px;
+  margin: 0 20px;
 }
 
 .search-button {
   display: block;
-  margin: 0 15px 20px;
-  width: calc(100% - 30px);
+  margin: 0 auto 32px;
+  width: 100%;
+  max-width: 300px;
   background-color: var(--primary);
   color: var(--white);
   border: none;
-  padding: 15px;
+  padding: 16px 24px;
   font-weight: bold;
   font-size: 16px;
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
 .search-button:hover {
@@ -122,40 +127,43 @@ body {
 
 .chart-container {
   background-color: var(--white);
-  margin: 0 16px 16px;
   border-radius: 16px;
-  padding: 16px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-bottom: 32px;
+  min-height: 400px;
 }
 
 .chart-container h2 {
-  margin: 0 0 8px;
+  margin: 0 0 20px;
   font-weight: 600;
   text-align: center;
+  font-size: 20px;
+  color: var(--text-dark);
 }
 
 .table-container {
-  width: 92%;
   background-color: var(--white);
-  border-radius: 12px;
-  margin: 20px auto 40px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   overflow: hidden;
+  margin-bottom: 40px;
 }
 
 .table-container h2 {
   background-color: var(--primary-light);
-  padding: 15px;
+  padding: 20px;
   margin: 0;
   font-weight: 600;
   text-align: center;
   border-bottom: 1px solid var(--border);
+  font-size: 18px;
 }
 
 .table-header {
   display: flex;
   background-color: var(--primary);
-  padding: 12px 5px;
+  padding: 16px 8px;
   color: var(--white);
   font-weight: bold;
   font-size: 14px;
@@ -164,6 +172,7 @@ body {
 .header-text {
   flex: 1;
   text-align: center;
+  padding: 0 8px;
 }
 
 .flex-2 {
@@ -171,26 +180,89 @@ body {
 }
 
 .table-empty-body {
-  padding: 40px;
+  padding: 60px 40px;
   text-align: center;
   color: var(--gray);
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .empty-table-text {
-  margin-top: 10px;
-  font-size: 14px;
+  margin-top: 16px;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 .empty-state {
   text-align: center;
-  margin-top: 50px;
-  padding: 40px 20px;
+  margin-top: 80px;
+  padding: 60px 40px;
   color: var(--gray);
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .empty-text {
-  margin-top: 15px;
-  font-size: 16px;
-  line-height: 24px;
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 1.6;
+  max-width: 500px;
 }
 
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 0;
+    padding-top: 64px;
+  }
+  
+  .content {
+    padding: 16px;
+  }
+  
+  .controls-container {
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+  }
+  
+  .date-picker-container {
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .separator {
+    width: 100%;
+    height: 1px;
+    margin: 8px 0;
+  }
+  
+  .search-button {
+    max-width: 100%;
+  }
+  
+  .chart-container {
+    padding: 16px;
+    min-height: 300px;
+  }
+  
+  .table-container h2 {
+    padding: 16px;
+    font-size: 16px;
+  }
+  
+  .table-header {
+    padding: 12px 4px;
+    font-size: 12px;
+  }
+  
+  .header-text {
+    padding: 0 4px;
+  }
+}

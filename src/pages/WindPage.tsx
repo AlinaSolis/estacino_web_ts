@@ -171,82 +171,46 @@ const WindScreen = () => {
   const windData = generateWindData();
 
   return (
-    <Box sx={{ backgroundColor: colors.background, minHeight: '100vh' }}>
-      {/* Header */}
-      <Box
-        sx={{
-          height: 60,
-          bgcolor: colors.primary,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          position: 'relative',
-          boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
-        }}
-      >
-        <IconButton
-          aria-label="menu"
-          onClick={() => alert('Abrir menú (implementa navegación)')}
-          sx={{ position: 'absolute', left: 15 }}
-          size="large"
-        >
-          <Menu color={colors.white} size={28} />
-        </IconButton>
-        <Typography variant="h6" sx={{ color: colors.white, fontWeight: 'bold' }}>
-          Datos del Viento
-        </Typography>
-      </Box>
-
-      {/* Contenido */}
-      <Box sx={{ p: 2 }}>
+    <div className="container">
+      <div className="content">
         <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={es}>
-          <Box
-            sx={{
-              display: 'flex',
-              gap: 2,
-              bgcolor: colors.white,
-              p: 2,
-              borderRadius: 2,
-              boxShadow: 1,
-              mb: 2,
-              justifyContent: 'center',
-              flexWrap: 'wrap',
-            }}
-          >
+          <div className="controlsContainer">
             {/* Fecha inicial */}
-            <Box sx={{ flex: 1, minWidth: 150, textAlign: 'center' }}>
-              <Typography variant="subtitle2" sx={{ mb: 1, color: colors.textDark, fontWeight: 600 }}>
+            <div className="datePickerContainer">
+              <label className="dateLabel">
                 Fecha inicial
-              </Typography>
-              <Button
-                variant="outlined"
-                startIcon={<CalendarTodayIcon />}
+              </label>
+              <button
+                className="dateButton"
                 onClick={(e) => handleOpenPicker(e, 'start')}
-                sx={{ width: '100%', justifyContent: 'space-between' }}
               >
+                <CalendarTodayIcon />
+                <span className="dateText">
                 {formatDate(startDate)}
+                </span>
                 <CalendarTodayIcon fontSize="small" />
-              </Button>
-            </Box>
+              </button>
+            </div>
 
             {/* Separador */}
-            <Divider orientation="vertical" flexItem />
+            <div className="separator" />
 
             {/* Fecha final */}
-            <Box sx={{ flex: 1, minWidth: 150, textAlign: 'center' }}>
-              <Typography variant="subtitle2" sx={{ mb: 1, color: colors.textDark, fontWeight: 600 }}>
+            <div className="datePickerContainer">
+              <label className="dateLabel">
                 Fecha final
-              </Typography>
-              <Button
-                variant="outlined"
-                startIcon={<CalendarTodayIcon />}
+              </label>
+              <button
+                className="dateButton"
                 onClick={(e) => handleOpenPicker(e, 'end')}
-                sx={{ width: '100%', justifyContent: 'space-between' }}
               >
+                <CalendarTodayIcon />
+                <span className="dateText">
                 {formatDate(endDate)}
+                </span>
                 <CalendarTodayIcon fontSize="small" />
-              </Button>
-            </Box>
+              </button>
+            </div>
 
             {/* Popover con DatePicker */}
             <Popover
@@ -279,45 +243,26 @@ const WindScreen = () => {
                 }}
               />
             </Popover>
-          </Box>
+          </div>
         </LocalizationProvider>
 
         {/* Botón consultar */}
-        <Button
-          variant="contained"
-          startIcon={<SearchIcon />}
+        <button
+          className="searchButton"
           onClick={handleSearch}
-          sx={{
-            bgcolor: colors.primary,
-            color: colors.white,
-            fontWeight: 'bold',
-            width: '100%',
-            mb: 2,
-            '&:hover': { bgcolor: '#065642' },
-          }}
         >
+          <SearchIcon />
           Consultar Datos
-        </Button>
+        </button>
 
         {/* Resultados o estado vacío */}
         {showResults ? (
           <>
             {/* Gráfico */}
-            <Paper
-              elevation={3}
-              sx={{
-                p: 2,
-                borderRadius: 2,
-                bgcolor: colors.white,
-                mb: 4,
-              }}
-            >
-              <Typography
-                variant="h6"
-                sx={{ textAlign: 'center', mb: 2, fontWeight: 600, color: colors.textDark }}
-              >
+            <div className="chartContainer">
+              <h3 className="chartTitle">
                 Velocidad del Viento (km/h)
-              </Typography>
+              </h3>
               <Line data={windData} options={{
                 responsive: true,
                 plugins: {
@@ -328,75 +273,43 @@ const WindScreen = () => {
                   y: { beginAtZero: true }
                 }
               }} />
-            </Paper>
+            </div>
 
             {/* Tabla resumen */}
-            <Paper elevation={3} sx={{ p: 2, borderRadius: 2, bgcolor: colors.white, width: '92%', mx: 'auto' }}>
-              <Typography
-                variant="h6"
-                sx={{
-                  textAlign: 'center',
-                  mb: 2,
-                  fontWeight: 600,
-                  color: colors.textDark,
-                  bgcolor: colors.primaryLight,
-                  p: 1,
-                  borderRadius: 1,
-                }}
-              >
+            <div className="tableContainer">
+              <h3 className="tableTitle">
                 Resumen de Datos Registrados
-              </Typography>
-              <Box sx={{ display: 'flex', bgcolor: colors.primary, color: 'white', p: 1, borderRadius: 1 }}>
-                <Typography sx={{ flex: 2, textAlign: 'center', fontWeight: 'bold' }}>
+              </h3>
+              <div className="tableHeader">
+                <span className="headerText flex2">
                   Fecha y Hora
-                </Typography>
-                <Typography sx={{ flex: 1, textAlign: 'center', fontWeight: 'bold' }}>
+                </span>
+                <span className="headerText">
                   Vel (km/h)
-                </Typography>
-                <Typography sx={{ flex: 1, textAlign: 'center', fontWeight: 'bold' }}>
+                </span>
+                <span className="headerText">
                   Dir
-                </Typography>
-                <Typography sx={{ flex: 1, textAlign: 'center', fontWeight: 'bold' }}>
+                </span>
+                <span className="headerText">
                   Ráfaga
-                </Typography>
-              </Box>
-              <Box
-                sx={{
-                  p: 5,
-                  textAlign: 'center',
-                  color: colors.gray,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  gap: 1,
-                }}
-              >
-                <HourglassEmptyIcon sx={{ fontSize: 40 }} />
-                <Typography>Cargando datos del viento...</Typography>
-              </Box>
-            </Paper>
+                </span>
+              </div>
+              <div className="tableEmptyBody">
+                <HourglassEmptyIcon style={{ fontSize: 40 }} />
+                <p className="emptyTableText">Cargando datos del viento...</p>
+              </div>
+            </div>
           </>
         ) : (
-          <Box
-            sx={{
-              p: 5,
-              mt: 6,
-              textAlign: 'center',
-              color: colors.gray,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              gap: 2,
-            }}
-          >
-            <AirIcon sx={{ fontSize: 60 }} />
-            <Typography sx={{ fontSize: 18, maxWidth: 400 }}>
+          <div className="emptyState">
+            <AirIcon style={{ fontSize: 60 }} />
+            <p className="emptyText">
               Selecciona un rango de fechas y presiona "Consultar Datos" para visualizar la información del viento.
-            </Typography>
-          </Box>
+            </p>
+          </div>
         )}
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 };
 
